@@ -34,4 +34,4 @@ Follow these steps:
   * System issues
   * Edge cases
   * Missing or incorrect feedback
-* Be specific and practical in each scenario.
+  * Be specific and practical in each scenario.
