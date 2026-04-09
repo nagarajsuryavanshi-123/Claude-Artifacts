@@ -27,6 +27,7 @@
 - `/PM/daily-check` — Run daily Jira pending check (assigned issues + unacknowledged mentions)
 
 ### Design System
+- `/ds-create` — Create a full Figma design system: variables, tokens, color/typo/spacing/radius/shadows + base components
 - `/ds-commands` — Re-generate this design system command suite from Figma + codebase
 - `/ds-sync-tokens` — Sync design tokens from Figma to the project token file
 - `/ds-add-component` — Scaffold a new component with variants and token bindings
