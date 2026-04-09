@@ -18,8 +18,18 @@
 - Atlassian MCP (Jira + Confluence): use for all Jira queries, issue lookups, comment searches
 
 ## Custom Commands
+
+### Jira / PM
 - `/PM/bug` — Create a Bug card in Jira
 - `/PM/epic` — Create an Epic card in Jira
 - `/PM/story` — Create a Story card in Jira
 - `/PM/task` — Create a Task card in Jira
 - `/PM/daily-check` — Run daily Jira pending check (assigned issues + unacknowledged mentions)
+
+### Design System
+- `/ds-commands` — Re-generate this design system command suite from Figma + codebase
+- `/ds-sync-tokens` — Sync design tokens from Figma to the project token file
+- `/ds-add-component` — Scaffold a new component with variants and token bindings
+- `/ds-audit` — Scan for hardcoded design values that should be tokens (`--fix` to auto-replace)
+- `/ds-docs` — Generate a component documentation page from Figma + code
+- `/ds-status` — Show design system health: token coverage, component count, audit score
