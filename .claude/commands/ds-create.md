@@ -22,22 +22,26 @@ I'll build your design system in Figma. Please provide:
 BRAND COLORS
   Primary   hex: ___________  (main CTA, buttons, links)
   Secondary hex: ___________  (supporting accent)
-  Tertiary  hex: ___________  (optional third accent, press Enter to skip)
-  Neutral   hex: ___________  (optional base gray, press Enter to use auto-derived)
-  Success   hex: ___________  (optional, default: #22c55e)
-  Warning   hex: ___________  (optional, default: #eab308)
-  Error     hex: ___________  (optional, default: #ef4444)
-  Info      hex: ___________  (optional, default: #3b82f6)
+  Tertiary  hex: ___________  (optional third accent, leave blank to skip)
 
 FONTS
   Primary font   : ___________  (headings + body, e.g. Inter)
-  Monospace font : ___________  (code blocks, e.g. JetBrains Mono, press Enter to skip)
+  Monospace font : ___________  (code blocks, e.g. JetBrains Mono, leave blank to skip)
 
 MODES
   Dark mode? (yes / no): ___
+
+FIGMA FILE URL: ___________
 ```
 
-Store all answers. Use defaults for anything left blank.
+Store all answers.
+
+The following are fixed defaults — do NOT ask for them. Only change if the user explicitly requests it later:
+- Neutral   → auto-derived by desaturating Primary 90%
+- Success   → #22c55e
+- Warning   → #eab308
+- Error     → #ef4444
+- Info      → #3b82f6
 
 ---
 
