@@ -136,7 +136,7 @@ space-10: 40   space-12: 48   space-16: 64   space-20: 80
 space-24: 96
 ```
 
-Border radius:
+Border radius primitives:
 ```
 radius-none: 0   radius-xs: 2   radius-sm: 4   radius-md: 6
 radius-lg: 8     radius-xl: 12  radius-2xl: 16 radius-3xl: 24
@@ -161,57 +161,98 @@ All semantic tokens **alias primitives** — never reference raw hex.
 
 Create **Light** mode (and **Dark** mode if user said yes).
 
-**Background**
+Use the **background / foreground pair convention**: every surface token has a matching `-foreground` token that controls text and icons on that surface.
+
+#### Core Surface & Text Pairs
+
+| Token | Light | Dark | Used In |
+|---|---|---|---|
+| `background` | base-white | neutral-950 | Page shell, body |
+| `foreground` | neutral-900 | neutral-50 | Default body text |
+| `card` | base-white | neutral-900 | Card, panels |
+| `card-foreground` | neutral-900 | neutral-50 | Card text |
+| `popover` | base-white | neutral-900 | Dropdowns, tooltips, command |
+| `popover-foreground` | neutral-900 | neutral-50 | Floating panel text |
+| `primary` | primary-600 | primary-400 | CTA buttons, badges |
+| `primary-foreground` | base-white | neutral-950 | Text on primary |
+| `secondary` | neutral-100 | neutral-800 | Secondary buttons |
+| `secondary-foreground` | neutral-900 | neutral-50 | Text on secondary |
+| `muted` | neutral-100 | neutral-800 | Subtle surfaces, skeletons |
+| `muted-foreground` | neutral-500 | neutral-400 | Placeholders, helper text, lead text |
+| `accent` | neutral-100 | neutral-800 | Hover states, ghost buttons, toggle active |
+| `accent-foreground` | neutral-900 | neutral-50 | Text on accent |
+| `destructive` | error-500 | error-600 | Delete buttons, error alerts |
+| `destructive-foreground` | base-white | base-white | Text on destructive |
+
+#### Brand Aliases
+
 | Token | Light | Dark |
 |---|---|---|
-| bg-default | base-white | neutral-950 |
-| bg-subtle | neutral-50 | neutral-900 |
-| bg-muted | neutral-100 | neutral-800 |
-| bg-emphasis | neutral-800 | neutral-100 |
-| bg-primary | primary-50 | primary-900 |
-| bg-secondary | secondary-50 | secondary-900 |
+| `brand-primary` | primary-600 | primary-400 |
+| `brand-primary-hover` | primary-700 | primary-300 |
+| `brand-primary-active` | primary-800 | primary-200 |
+| `brand-secondary` | secondary-600 | secondary-400 |
+| `brand-secondary-hover` | secondary-700 | secondary-300 |
+| `brand-tertiary` | tertiary-600 | tertiary-400 | ← skip if no tertiary |
 
-**Foreground / Text**
+#### Border & Form
+
+| Token | Light | Dark | Used In |
+|---|---|---|---|
+| `border` | neutral-200 | neutral-700 (10% white alpha) | Cards, dividers, tables, separators |
+| `input` | neutral-200 | neutral-700 (15% white alpha) | Input, textarea, select, combobox borders |
+| `ring` | neutral-400 | neutral-500 | Focus rings on buttons, inputs, checkboxes |
+
+#### State / Feedback
+
 | Token | Light | Dark |
 |---|---|---|
-| fg-default | neutral-900 | neutral-50 |
-| fg-muted | neutral-500 | neutral-400 |
-| fg-subtle | neutral-400 | neutral-500 |
-| fg-disabled | neutral-300 | neutral-700 |
-| fg-on-primary | base-white | base-white |
-| fg-on-secondary | base-white | base-white |
+| `state-success` | success-500 | success-500 |
+| `state-success-subtle` | success-50 | success-900 |
+| `state-warning` | warning-500 | warning-500 |
+| `state-warning-subtle` | warning-50 | warning-900 |
+| `state-error` | error-500 | error-500 |
+| `state-error-subtle` | error-50 | error-900 |
+| `state-info` | info-500 | info-500 |
+| `state-info-subtle` | info-50 | info-900 |
 
-**Brand**
+#### Chart Palette (5 tokens for data visualisation)
+
 | Token | Light | Dark |
 |---|---|---|
-| brand-primary | primary-600 | primary-400 |
-| brand-primary-hover | primary-700 | primary-300 |
-| brand-primary-active | primary-800 | primary-200 |
-| brand-secondary | secondary-600 | secondary-400 |
-| brand-secondary-hover | secondary-700 | secondary-300 |
-| brand-tertiary | tertiary-600 | tertiary-400 |  ← skip if no tertiary |
+| `chart-1` | primary-500 | primary-400 |
+| `chart-2` | secondary-500 | secondary-400 |
+| `chart-3` | success-500 | success-400 |
+| `chart-4` | warning-500 | warning-400 |
+| `chart-5` | info-500 | info-400 |
 
-**Border**
-| Token | Light | Dark |
-|---|---|---|
-| border-default | neutral-200 | neutral-700 |
-| border-muted | neutral-100 | neutral-800 |
-| border-emphasis | neutral-400 | neutral-500 |
-| border-primary | primary-300 | primary-700 |
+#### Sidebar Tokens (extended set for sidebar component)
 
-**State**
-| Token | Light | Dark |
-|---|---|---|
-| state-success-bg | success-500 | success-500 |
-| state-success-subtle | (success-50 or lightest step) | (success-900) |
-| state-warning-bg | warning-500 | warning-500 |
-| state-warning-subtle | warning-50 | warning-900 |
-| state-error-bg | error-500 | error-500 |
-| state-error-subtle | error-50 | error-900 |
-| state-info-bg | info-500 | info-500 |
-| state-info-subtle | info-50 | info-900 |
+| Token | Light | Dark | Purpose |
+|---|---|---|---|
+| `sidebar` | neutral-50 | neutral-900 | Sidebar background |
+| `sidebar-foreground` | neutral-700 | neutral-200 | Sidebar default text |
+| `sidebar-primary` | primary-600 | primary-400 | Active nav items, CTAs |
+| `sidebar-primary-foreground` | base-white | neutral-950 | Text on sidebar-primary |
+| `sidebar-accent` | neutral-100 | neutral-800 | Hover + selected states |
+| `sidebar-accent-foreground` | neutral-900 | neutral-50 | Text on sidebar-accent |
+| `sidebar-border` | neutral-200 | neutral-700 | Sidebar separators |
+| `sidebar-ring` | primary-400 | primary-500 | Focus rings inside sidebar |
 
-**Typography Semantic**
+#### Radius Scale (proportional from base radius)
+
+```
+--radius:     8px                          (base — user can override)
+--radius-sm:  calc(var(--radius) * 0.6)   → ~5px
+--radius-md:  calc(var(--radius) * 0.8)   → ~6px
+--radius-lg:  var(--radius)               → 8px
+--radius-xl:  calc(var(--radius) * 1.4)   → ~11px
+--radius-2xl: calc(var(--radius) * 1.8)   → ~14px
+--radius-3xl: calc(var(--radius) * 2.2)   → ~18px
+--radius-4xl: calc(var(--radius) * 2.6)   → ~21px
+```
+
+#### Typography Semantic
 ```
 text-display  → font-size-5xl,  font-weight-bold,     line-height-tight
 text-h1       → font-size-4xl,  font-weight-bold,     line-height-tight
@@ -229,7 +270,7 @@ text-label-sm → font-size-xs,   font-weight-medium,   line-height-normal
 text-code     → font-size-sm,   font-weight-regular,  line-height-relaxed
 ```
 
-**Spacing Semantic**
+#### Spacing Semantic
 ```
 gap-none → space-0    gap-xs → space-1    gap-sm → space-2
 gap-md   → space-4    gap-lg → space-6    gap-xl → space-8    gap-2xl → space-12
@@ -238,21 +279,14 @@ padding-xs → space-2    padding-sm → space-3    padding-md → space-4
 padding-lg → space-6    padding-xl → space-8
 ```
 
-**Radius Semantic**
-```
-component-radius-sm  → radius-sm
-component-radius-md  → radius-md
-component-radius-lg  → radius-lg
-component-radius-pill→ radius-full
-```
-
-**Elevation**
+#### Elevation
 ```
 elevation-1 → shadow-xs
 elevation-2 → shadow-sm
 elevation-3 → shadow-md
 elevation-4 → shadow-lg
 elevation-5 → shadow-xl
+elevation-6 → shadow-2xl
 ```
 
 ---
@@ -297,35 +331,440 @@ Elevation/6 → shadow-2xl
 
 ---
 
-## Step 6 — Scaffold Base Components
+## Step 6 — Scaffold All Components
 
-Create a **"Foundation"** page in Figma with these components, all fills/strokes/text bound to semantic tokens:
+Create a **"Foundation"** page in Figma with all 59 components organised by category.
+All fills, strokes, radius, and text must be bound to semantic tokens — zero raw hex values.
 
-### Button
-Variants: Size (sm, md, lg) × Style (primary, secondary, ghost, danger, link)
-- Primary: bg → brand-primary, text → fg-on-primary, hover → brand-primary-hover
-- Secondary: bg → bg-secondary, border → border-primary, text → brand-primary
-- Ghost: bg → transparent, text → brand-primary, hover → bg-primary
-- Danger: bg → state-error-bg, text → fg-on-primary
-- Radius → component-radius-md
+---
 
-### Input / Text Field
-Variants: State (default, focused, error, disabled)
-- bg → bg-default, border → border-default
-- focused border → border-primary
-- error border → state-error-bg
-- label text → fg-muted, input text → fg-default
+### Category 1 — Form & Input (13 components)
 
-### Badge / Tag
-Variants: Style (neutral, primary, secondary, success, warning, error, info)
-- Each bound to matching `state-*` or `brand-*` tokens
-- Radius → component-radius-pill
+#### Checkbox
+Variants: State (unchecked, checked, indeterminate, disabled, invalid)
+- Indicator: `primary` fill when checked
+- Border: `input` token · Focus ring: `ring` token
+- Pair with `Field` for label + description + error composition
 
-### Color Palette Documentation Frame
-A grid frame showing every primitive color step (50–950) for all brand colors, labeled with variable names.
+#### Combobox
+Variants: simple, multiple-selection (with chips), grouped, popup, input-group-addon
+States: default, open, auto-highlight, invalid (`aria-invalid`), disabled
+Sub-components: `ComboboxInput`, `ComboboxContent`, `ComboboxEmpty`, `ComboboxList`, `ComboboxItem`, `ComboboxChips`, `ComboboxChip`, `ComboboxGroup`, `ComboboxLabel`, `ComboboxSeparator`
+- Input border: `input` · Dropdown surface: `popover` bg · Item hover: `accent`
+- Chips: `secondary` bg · `secondary-foreground` text · Clear button: `muted-foreground`
 
-### Typography Scale Frame
-A frame showing every text style rendered in both primary and mono fonts.
+#### Field
+Orientations: vertical (default), horizontal, responsive
+Sub-components: `FieldSet`, `FieldGroup`, `FieldLabel`, `FieldContent`, `FieldDescription`, `FieldError`, `FieldLegend`, `FieldSeparator`, `FieldTitle`
+States: default, `data-invalid` (entire field block switches to error), disabled
+- Label: `foreground` text · Description: `muted-foreground` · Error: `state-error` color
+
+#### Input
+States: default, focused, disabled, invalid, file
+Types: text, number, search, file, required
+- Border: `input` token · Focus ring: `ring` · Placeholder: `muted-foreground`
+- Pair with `Field` + `FieldLabel` + `FieldDescription` for full form layout
+- Pair with `InputGroup` to add icons, text, or buttons inline
+
+#### Input Group
+Addon alignments: inline-start (default), inline-end, block-start, block-end
+Sub-components: `InputGroupInput`, `InputGroupTextarea`, `InputGroupAddon`, `InputGroupButton`, `InputGroupText`
+Button sizes inside group: xs, icon-xs, sm, icon-sm · Variants: ghost (default), outline, secondary
+- Addon background: `muted` · Addon text: `muted-foreground` · Input border: `input`
+
+#### Input OTP
+Lengths: 4-digit, 6-digit, custom (`maxLength`)
+Patterns: digits-only (`REGEXP_ONLY_DIGITS`), alphanumeric (`REGEXP_ONLY_DIGITS_AND_CHARS`)
+Variants: with separator, without separator
+States: default, disabled, invalid (`aria-invalid`)
+Sub-components: `InputOTPGroup`, `InputOTPSlot`, `InputOTPSeparator`
+- Slot border: `input` · Active slot: `ring` focus · Letter spacing: 0.25em
+
+#### Label
+Variants: standalone (via `htmlFor`), field-integrated (`FieldLabel`)
+- Color: `foreground` · Font: `text-label-md`
+
+#### Native Select
+Variants: flat options, grouped options (`NativeSelectOptGroup`)
+States: default, disabled, invalid (`aria-invalid`)
+Sub-components: `NativeSelect`, `NativeSelectOption`, `NativeSelectOptGroup`
+- Border: `input` · Background: `background` · Focus ring: `ring`
+- Prefer over `Select` when native browser behavior + mobile optimization is needed
+
+#### Radio Group
+Spacing variants: default, comfortable, compact
+Compositions: description cards, choice cards (`FieldLabel` wrapping), fieldset with legend
+States: unselected, selected, disabled, invalid (`aria-invalid`)
+Sub-components: `RadioGroup`, `RadioGroupItem`
+- Selected indicator: `primary` fill · Border: `input` · Focus: `ring`
+
+#### Select
+Positions: `item-aligned` (default), `popper`
+States: default, open, selected, disabled, invalid
+Sub-components: `SelectTrigger`, `SelectValue`, `SelectContent`, `SelectGroup`, `SelectLabel`, `SelectItem`, `SelectSeparator`
+- Trigger border: `input` · Content surface: `popover` bg · Item hover: `accent`
+- Group label: `muted-foreground` · Selected item: `primary`
+
+#### Slider
+Types: single value, range (two thumbs), multiple thumbs
+Orientations: horizontal (default), vertical
+States: default, disabled
+- Track: `secondary` bg · Range fill: `primary` · Thumb: `background` with `border` stroke · Focus: `ring`
+
+#### Switch
+Sizes: default, small (`size="sm"`)
+Compositions: standalone, with label (`Field` + `FieldLabel`), choice card
+States: off, on, disabled, invalid
+- Off track: `input` border color · On track: `primary` fill · Thumb: `background`
+
+#### Textarea
+States: default, focused, disabled, invalid
+Compositions: with label + description, with submit button
+- Border: `input` · Focus ring: `ring` · Placeholder: `muted-foreground`
+- Pair with `Field` for labeled composition with `FieldLabel` + `FieldDescription`
+
+---
+
+### Category 2 — Actions / Buttons (4 components)
+
+#### Button
+Styles: default, outline, secondary, ghost, destructive, link
+Sizes: xs, sm, default, lg, icon, icon-xs, icon-sm, icon-lg
+States: default, hover, disabled, loading (with Spinner inside)
+Icon positions: `data-icon="inline-start"` · `data-icon="inline-end"`
+Token bindings:
+- Default: `primary` bg · `primary-foreground` text
+- Outline: `border` stroke · `foreground` text · `accent` hover bg
+- Secondary: `secondary` bg · `secondary-foreground` text
+- Ghost: transparent bg · `accent` hover · `foreground` text
+- Destructive: `destructive` bg · `destructive-foreground` text
+- Link: no bg/border · `primary` text color
+
+#### Button Group
+Pattern: multiple Button components grouped in a row or column
+Variants: connected (shared border radius removed between buttons), spaced (with gap)
+Sizes: inherits Button sizes
+Token bindings: same as Button — no new tokens introduced
+
+#### Toggle
+Styles: default, outline
+Sizes: sm, default, lg
+States: off (inactive), on (active/pressed), disabled
+- Inactive: transparent bg · `foreground` text
+- Active: `accent` bg · `accent-foreground` text
+- Outline variant adds `border` stroke in inactive state
+
+#### Toggle Group
+Types: single selection, multiple selection
+Styles: default, outline
+Orientations: horizontal (default), vertical
+Spacing: with gap (`spacing` prop)
+States: item active, item disabled, group disabled
+Sub-components: `ToggleGroup`, `ToggleGroupItem`
+- Same token bindings as Toggle · Items share border radius for connected look
+
+---
+
+### Category 3 — Overlay & Floating UI (9 components)
+
+#### Alert Dialog
+Sizes: default, sm
+Compositions: basic, with media (`AlertDialogMedia`), destructive action, small with media
+Sub-components: `AlertDialogTrigger`, `AlertDialogContent`, `AlertDialogHeader`, `AlertDialogTitle`, `AlertDialogDescription`, `AlertDialogMedia`, `AlertDialogFooter`, `AlertDialogCancel`, `AlertDialogAction`
+- Overlay: `background` at 80% opacity · Content surface: `background` · `border` stroke
+- Action button: `primary` · Cancel: `secondary` · Destructive action: `destructive`
+
+#### Context Menu
+Variants: basic, with submenus, with shortcuts (`ContextMenuShortcut`), grouped, with icons, checkbox items, radio items, destructive
+Trigger: right-click (desktop) · long-press (mobile)
+Sub-components: `ContextMenuTrigger`, `ContextMenuContent`, `ContextMenuGroup`, `ContextMenuLabel`, `ContextMenuItem`, `ContextMenuSeparator`, `ContextMenuCheckboxItem`, `ContextMenuRadioGroup`, `ContextMenuRadioItem`, `ContextMenuSub`, `ContextMenuShortcut`
+- Surface: `popover` bg · `popover-foreground` text · Item hover: `accent`
+- Separator: `border` · Shortcut text: `muted-foreground` · Destructive: `destructive`
+
+#### Dialog
+Variants: standard, custom close button, no close button (`showCloseButton={false}`), sticky footer, scrollable content
+Sub-components: `DialogTrigger`, `DialogContent`, `DialogHeader`, `DialogTitle`, `DialogDescription`, `DialogFooter`
+- Overlay: `background` at 80% opacity · Content: `background` bg · `border` stroke
+- Title: `foreground` · Description: `muted-foreground`
+
+#### Drawer
+Directions: top, right, bottom (default/mobile), left
+Compositions: standard, scrollable content, responsive (Dialog on desktop / Drawer on mobile)
+Sub-components: `DrawerTrigger`, `DrawerContent`, `DrawerHeader`, `DrawerTitle`, `DrawerDescription`, `DrawerFooter`
+- Surface: `background` · Drag handle: `muted` · Title: `foreground` · Description: `muted-foreground`
+
+#### Dropdown Menu
+Variants: basic, with submenus, checkbox items, radio groups, with icons, destructive actions, avatar-triggered
+Sub-components: `DropdownMenuTrigger`, `DropdownMenuContent`, `DropdownMenuGroup`, `DropdownMenuLabel`, `DropdownMenuItem`, `DropdownMenuSeparator`, `DropdownMenuCheckboxItem`, `DropdownMenuRadioGroup`, `DropdownMenuRadioItem`, `DropdownMenuSub`, `DropdownMenuShortcut`
+- Surface: `popover` bg · Item hover: `accent` · Label: `muted-foreground`
+- Separator: `border` · Destructive: `destructive` · Shortcut: `muted-foreground`
+
+#### Hover Card
+Directions: top, bottom, left, right (via `side` prop)
+Alignment: start, center, end (via `align` prop)
+Timing: `openDelay`, `closeDelay` props
+Sub-components: `HoverCard`, `HoverCardTrigger`, `HoverCardContent`
+- Surface: `popover` bg · `popover-foreground` text · `border` stroke + shadow
+
+#### Popover
+Alignments: start, center, end
+Compositions: basic, with form fields inside
+Sub-components: `Popover`, `PopoverTrigger`, `PopoverContent`, `PopoverHeader`, `PopoverTitle`, `PopoverDescription`
+- Surface: `popover` bg · `popover-foreground` text · `border` stroke + shadow
+
+#### Sheet
+Sides: top, right (default), bottom, left
+Close button: shown by default, hide with `showCloseButton={false}`
+Sub-components: `SheetTrigger`, `SheetContent`, `SheetHeader`, `SheetTitle`, `SheetDescription`, `SheetFooter`
+- Surface: `background` · Overlay: `background` at 80% opacity · `border` on open edge
+
+#### Tooltip
+Positions: left, top (default), bottom, right (via `side` prop)
+Patterns: basic, disabled button (wrapped in `<span>`), with keyboard shortcut (`Kbd`)
+Requires `TooltipProvider` at app root
+Sub-components: `Tooltip`, `TooltipTrigger`, `TooltipContent`
+- Surface: `popover` bg · `popover-foreground` text · Rounded: `radius-md`
+
+---
+
+### Category 4 — Navigation (7 components)
+
+#### Breadcrumb
+Variants: basic, custom separator, with dropdown collapse, with ellipsis, link-component (asChild)
+Sub-components: `Breadcrumb`, `BreadcrumbList`, `BreadcrumbItem`, `BreadcrumbLink`, `BreadcrumbPage`, `BreadcrumbSeparator`, `BreadcrumbEllipsis`
+- Link: `primary` · Current page: `foreground` · Separator: `muted-foreground`
+
+#### Command
+Variants: basic menu, grouped (with `CommandGroup`), with keyboard shortcuts, dialog variant (`CommandDialog`)
+Sub-components: `Command`, `CommandInput`, `CommandList`, `CommandEmpty`, `CommandGroup`, `CommandItem`, `CommandSeparator`, `CommandDialog`
+- Surface: `popover` bg · Input: `background` · Item hover: `accent`
+- Group label: `muted-foreground` · Separator: `border` · Shortcut: `muted-foreground`
+
+#### Menubar
+Variants: basic (File/Edit/View), checkbox items, radio groups, submenus, with icons
+Sub-components: `Menubar`, `MenubarMenu`, `MenubarTrigger`, `MenubarContent`, `MenubarGroup`, `MenubarLabel`, `MenubarItem`, `MenubarSeparator`, `MenubarCheckboxItem`, `MenubarRadioGroup`, `MenubarRadioItem`, `MenubarSub`, `MenubarSubTrigger`, `MenubarSubContent`, `MenubarShortcut`
+- Bar: `background` · Active trigger: `accent` · Content surface: `popover` bg
+
+#### Navigation Menu
+Variants: basic links, with content panel (mega-menu), asChild for custom router links
+Sub-components: `NavigationMenu`, `NavigationMenuList`, `NavigationMenuItem`, `NavigationMenuTrigger`, `NavigationMenuContent`, `NavigationMenuLink`, `NavigationMenuIndicator`
+- Trigger hover: `accent` bg · Content panel: `background` · Active indicator: `primary`
+
+#### Pagination
+Variants: numbered pages, prev/next only, icons-only (for data tables)
+States: default, active page (`isActive`), disabled at boundaries
+Sub-components: `Pagination`, `PaginationContent`, `PaginationItem`, `PaginationLink`, `PaginationPrevious`, `PaginationNext`, `PaginationEllipsis`
+- Active page: `primary` bg · `primary-foreground` text · Inactive: `background` + `border`
+
+#### Sidebar
+Variants: sidebar (default), floating, inset
+Collapsible modes: offcanvas (slides in/out), icon (collapses to icon strip), none (fixed)
+Sides: left (default), right
+States: expanded, collapsed · Keyboard: Cmd/Ctrl + B
+Width: `--sidebar-width` (16rem desktop), `--sidebar-width-mobile` (18rem)
+Sub-components: `SidebarProvider`, `Sidebar`, `SidebarHeader`, `SidebarFooter`, `SidebarContent`, `SidebarGroup`, `SidebarGroupLabel`, `SidebarGroupContent`, `SidebarMenu`, `SidebarMenuItem`, `SidebarMenuButton`, `SidebarMenuAction`, `SidebarMenuSub`, `SidebarMenuSubItem`, `SidebarMenuBadge`, `SidebarRail`, `SidebarInset`, `SidebarTrigger`, `SidebarSeparator`
+Token bindings: all 8 sidebar tokens (`sidebar`, `sidebar-foreground`, `sidebar-primary`, `sidebar-primary-foreground`, `sidebar-accent`, `sidebar-accent-foreground`, `sidebar-border`, `sidebar-ring`)
+
+#### Tabs
+Styles: default (boxed), line (`variant="line"` on TabsList)
+Orientations: horizontal (default), vertical
+States: active, inactive, disabled (individual triggers)
+Sub-components: `Tabs`, `TabsList`, `TabsTrigger`, `TabsContent`
+- Active trigger: `background` with shadow · Inactive: transparent · Line variant: `border-b` + `primary` indicator
+
+---
+
+### Category 5 — Feedback & Status (7 components)
+
+#### Alert
+Variants: default, destructive (`variant="destructive"`)
+Sub-components: `Alert`, `AlertTitle`, `AlertDescription`, `AlertAction`
+- Default: `background` bg · `border` stroke · Icon + title `foreground`
+- Destructive: `state-error-subtle` bg · `state-error` border · `destructive` text
+
+#### Badge
+Variants: default, secondary, outline, ghost, destructive, link
+States: with icon (`data-icon="inline-start/end"`), with Spinner (loading)
+- Default: `primary` bg · `primary-foreground` text
+- Secondary: `secondary` bg · `secondary-foreground` text
+- Outline: `border` stroke · `foreground` text · transparent bg
+- Destructive: `destructive` bg · `destructive-foreground` text
+
+#### Progress
+Variants: basic (value 0–100), with label (inside `Field`), controlled (synced to a Slider)
+RTL: inverts fill direction
+- Track: `secondary` bg · Fill: `primary` · Label: `foreground`
+
+#### Skeleton
+Shapes: text line, avatar (circle), card block, form field, table row
+- Background: `muted` · Animated shimmer via CSS animation
+- Sizes via Tailwind: `h-[Npx]`, `w-[Npx]`, `rounded-*`
+
+#### Sonner
+Variants: default, success, info, warning, error, promise (async feedback)
+Positions: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+Requires `<Toaster />` in root layout
+- Surface: `background` · Border: `border` · `foreground` text
+- Success: `state-success` accent · Warning: `state-warning` · Error: `state-error`
+
+#### Spinner
+Sizes: sm (`size-3`), default (`size-4`), lg (`size-6`) via Tailwind `size-*`
+States: always spinning (active loading indicator)
+Integration: embed inside Button, Badge, InputGroup, Empty
+- Color: inherits `currentColor` · Animation: `animate-spin`
+
+#### Toast (Deprecated)
+Status: **Deprecated** — use Sonner instead
+If legacy support needed: document only, do not scaffold new instances
+- Direct teams to migrate to Sonner component
+
+---
+
+### Category 6 — Data Display (8 components)
+
+#### Avatar
+Sizes: sm, default, lg
+Compositions: basic (image + text fallback), with badge (`AvatarBadge`), with badge icon, avatar group (`AvatarGroup`), group count (`AvatarGroupCount`), as dropdown trigger
+Sub-components: `Avatar`, `AvatarImage`, `AvatarFallback`, `AvatarBadge`, `AvatarGroup`, `AvatarGroupCount`
+- Fallback bg: `muted` · Fallback text: `muted-foreground` · Badge: `state-success` (online), `state-error` (busy)
+
+#### Calendar
+Modes: single date, range selection
+Layout: standard, month/year dropdown (`captionLayout="dropdown"`)
+Locale: Gregorian (default), Persian/Hijri
+Options: `showWeekNumber`, `timeZone`, `dir` (RTL)
+Cell size: controlled via `--cell-size` CSS variable
+- Selected date: `primary` bg · `primary-foreground` text
+- Range fill: `accent` · Today: `accent` outline · Nav buttons: `ghost` variant
+
+#### Card
+Sizes: default, sm (`size="sm"` for compact spacing)
+Sub-components: `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardAction`, `CardContent`, `CardFooter`
+`CardAction`: top-right slot for buttons, badges, toggles
+- Surface: `card` bg · `card-foreground` text · `border` stroke · Radius: `radius-lg`
+
+#### Carousel
+Orientations: horizontal (default), vertical
+Item widths: full (100%), half (50%), third (33%), responsive combinations
+Features: autoplay plugin, swipe gestures, API access via `setApi`
+Sub-components: `Carousel`, `CarouselContent`, `CarouselItem`, `CarouselPrevious`, `CarouselNext`
+- Nav buttons: `outline` Button variant · Item bg: inherits content
+
+#### Chart
+Types: Bar, Line, Area, Pie, Radar (all powered by Recharts v3)
+Config: `ChartContainer` with `config` prop defining label, color, icon per series
+Tooltip variants: label, name, indicator (dot/line/dashed), value
+Legend: `ChartLegend` + `ChartLegendContent`
+Accessibility: `accessibilityLayer` prop for keyboard + screen reader
+Color system: `--chart-1` through `--chart-5` CSS variables
+- Use `var(--color-KEY)` in Recharts fill/stroke props — never hardcode hex
+
+#### Data Table
+Built on TanStack Table (`@tanstack/react-table`)
+Features: basic columns, row actions (DropdownMenu), pagination, column sorting, column filtering, column visibility toggle, row selection (checkboxes)
+Uses base `Table` components: `Table`, `TableHeader`, `TableRow`, `TableHead`, `TableBody`, `TableCell`, `TableCaption`, `TableFooter`
+- Header: `background` · Row hover: `accent` at low opacity · Selected row: `accent`
+
+#### Date Picker
+Variants: basic (single date), range picker, date of birth (with month/year dropdown), with text input, with time picker, natural language (`chrono-node` parsing)
+Composition: `Popover` + `Calendar` + optional `Input`
+- Trigger: `outline` Button · Popover surface: `popover` bg · Empty placeholder: `muted-foreground`
+
+#### Table
+Compositions: basic, with row actions (DropdownMenu in each row), sortable headers
+Sub-components: `Table`, `TableCaption`, `TableHeader`, `TableRow`, `TableHead`, `TableBody`, `TableCell`, `TableFooter`
+- Header: `background` or `muted` bg · `muted-foreground` header text
+- Row dividers: `border` · Footer: `muted` bg · Hover row: `accent`
+
+---
+
+### Category 7 — Layout & Structure (6 components)
+
+#### Accordion
+Types: single (only one open), multiple (many open simultaneously)
+Props: `collapsible` (allow closing active item in single mode), `disabled` on individual items
+Compositions: plain, with `border` wrapper, inside `Card`
+Sub-components: `Accordion`, `AccordionItem`, `AccordionTrigger`, `AccordionContent`
+- Trigger: `foreground` · Divider: `border` · Content text: `foreground`
+- Chevron rotates on open · Radius: `radius-md` on wrapper
+
+#### Aspect Ratio
+Ratios: 16/9 (widescreen), 4/3, 1/1 (square), 9/16 (portrait), any custom numeric ratio
+Combine with `object-cover` on child images for consistent scaling
+- No color tokens — structural only · Radius via `rounded-*` on child
+
+#### Collapsible
+Patterns: basic Q&A disclosure, settings panel, file tree (nested collapsibles)
+Sub-components: `Collapsible`, `CollapsibleTrigger`, `CollapsibleContent`
+- Trigger: inherits Button or ghost styles · Content: `foreground` text
+
+#### Resizable
+Orientations: horizontal (default), vertical
+Handle: hidden (default), visible (`withHandle` prop on `ResizableHandle`)
+Sub-components: `ResizablePanelGroup`, `ResizablePanel`, `ResizableHandle`
+- Panel bg: `background` · Handle: `border` color · Handle icon: `muted-foreground`
+
+#### Scroll Area
+Orientations: vertical (default), horizontal
+Sub-components: `ScrollArea`, `ScrollBar`
+- Scrollbar track: transparent · Thumb: `border` color · Radius: `radius-full`
+- Hides native browser scrollbar across all browsers
+
+#### Separator
+Orientations: horizontal (default), vertical
+- Color: `border` token · No background fill — line only
+
+---
+
+### Category 8 — Content & Display (4 components)
+
+#### Empty
+Variants: icon (using `EmptyMedia variant="icon"`), default media, outline border, with background, with avatar, with avatar group, with input form
+Sub-components: `Empty`, `EmptyHeader`, `EmptyMedia`, `EmptyTitle`, `EmptyDescription`, `EmptyContent`
+- Title: `foreground` · Description: `muted-foreground`
+- Icon bg: `muted` · Icon color: `muted-foreground` · Border: `border`
+
+#### Item
+Variants: default (transparent), outline (with `border`), muted (`muted` bg)
+Sizes: default, sm, xs
+States: hover (when `asChild` renders as link), focus, active/selected
+Sub-components: `ItemGroup`, `Item`, `ItemHeader`, `ItemMedia` (default/icon/image), `ItemContent`, `ItemTitle`, `ItemDescription`, `ItemActions`, `ItemFooter`
+- Title: `foreground` · Description: `muted-foreground`
+- Outline border: `border` · Muted bg: `muted` · Hover: `accent`
+
+#### Kbd
+Patterns: single key (`<Kbd>Ctrl</Kbd>`), key group (`KbdGroup` for combinations like Ctrl + B)
+Integration: inside Button, Tooltip, InputGroup, Command palette hints
+Sub-components: `Kbd`, `KbdGroup`
+- Background: `muted` · Text: `muted-foreground` · Border: `border` · Radius: `radius-sm`
+- Font: monospace (`font-family-mono`)
+
+#### Typography
+Styles: h1, h2, h3, h4, paragraph, blockquote, lead, large, small, muted, inline code
+- h1: 36px bold, tracking-tight · h2: 30px semibold + border-bottom
+- h3: 24px semibold · h4: 20px semibold
+- Lead: 20px `muted-foreground` · Large: 18px semibold · Small: 14px medium
+- Muted: 14px `muted-foreground` · Inline Code: `muted` bg, `font-mono`, `radius-sm`
+- Blockquote: `border-l-2` in `primary` · italic text
+
+---
+
+### Category 9 — Utilities / Providers (1 component)
+
+#### Direction
+Purpose: RTL/LTR text-direction provider for internationalisation
+Directions: ltr (default), rtl
+Hook: `useDirection()` to read current direction inside components
+Usage: wrap app root with `<DirectionProvider direction="rtl">` and set `<html dir="rtl">`
+- No visual tokens — structural provider only
+
+---
+
+### Foundation Documentation Frames (always created)
+
+**Color Palette Grid** — every primitive step (50–950) for all brand colors, labeled with variable names and hex values.
+
+**Typography Scale** — every text style rendered live in the user's chosen fonts, showing name, size, weight, and line height.
 
 ---
 
@@ -351,20 +790,59 @@ Brand inputs used:
 Variable Collections:
   ✓ Primitives  — N variables
   ✓ Semantic    — N variables (Light mode  +  Dark mode)
+    ↳ Core pairs (background/foreground, card, popover, primary, secondary,
+                  muted, accent, destructive, border, input, ring)
+    ↳ Chart tokens (chart-1 … chart-5)
+    ↳ Sidebar tokens (sidebar, sidebar-primary, sidebar-accent, sidebar-border, sidebar-ring)
+    ↳ Radius scale (--radius base + sm/md/lg/xl/2xl/3xl/4xl derived steps)
+    ↳ State tokens (success, warning, error, info + subtle variants)
 
 Text Styles:        16 styles
 Effect Styles:      6 elevation levels
 
-Components:
-  ✓ Button        (5 styles × 3 sizes)
-  ✓ Input         (4 states)
-  ✓ Badge         (7 styles)
-  ✓ Color palette documentation frame
-  ✓ Typography scale frame
+Components (59 total across 9 categories):
+
+  Category 1 — Form & Input (13)
+    ✓ Checkbox, Combobox, Field, Input, Input Group, Input OTP
+    ✓ Label, Native Select, Radio Group, Select, Slider, Switch, Textarea
+
+  Category 2 — Actions / Buttons (4)
+    ✓ Button (6 styles × 8 sizes), Button Group, Toggle, Toggle Group
+
+  Category 3 — Overlay & Floating UI (9)
+    ✓ Alert Dialog, Context Menu, Dialog, Drawer
+    ✓ Dropdown Menu, Hover Card, Popover, Sheet, Tooltip
+
+  Category 4 — Navigation (7)
+    ✓ Breadcrumb, Command, Menubar, Navigation Menu
+    ✓ Pagination, Sidebar, Tabs
+
+  Category 5 — Feedback & Status (7)
+    ✓ Alert, Badge, Progress, Skeleton, Sonner, Spinner
+    ✓ Toast (deprecated — documented only, redirect to Sonner)
+
+  Category 6 — Data Display (8)
+    ✓ Avatar, Calendar, Card, Carousel
+    ✓ Chart (Bar/Line/Area/Pie/Radar), Data Table, Date Picker, Table
+
+  Category 7 — Layout & Structure (6)
+    ✓ Accordion, Aspect Ratio, Collapsible, Resizable, Scroll Area, Separator
+
+  Category 8 — Content & Display (4)
+    ✓ Empty, Item, Kbd, Typography
+
+  Category 9 — Utilities / Providers (1)
+    ✓ Direction (DirectionProvider — ltr/rtl)
+
+  Foundation frames:
+    ✓ Color Palette Grid
+    ✓ Typography Scale
 
 Next steps:
   → Run /ds-sync-tokens <figma-url> to pull these tokens into your codebase
   → Run /ds-add-component <Name> <figma-node-id> to scaffold code for any component
+  → Run /ds-audit to check codebase for hardcoded values that should be tokens
+  → Run /ds-status to see full design system health
 ```
 
 ---
@@ -373,6 +851,10 @@ Next steps:
 - ALWAYS load `figma-use` skill before any Figma MCP tool call — never skip this
 - Collect ALL brand inputs before writing a single variable — do not guess or use defaults silently
 - Semantic tokens must alias primitives — never reference raw hex in the Semantic collection
+- Every surface token must have a matching `-foreground` token (background/foreground pair convention)
+- Radius scale must use `calc(var(--radius) * X)` — never hardcode pixel values in semantic layer
+- Chart tokens (`chart-1..5`) and sidebar tokens are always created, even if no chart/sidebar component is scaffolded yet
+- Toast is deprecated — always note this and direct users to Sonner when Toast is requested
 - Derived color steps must be computed mathematically — do not invent values
 - If any collection already exists in the Figma file → show a diff and ask before overwriting
 - Dark mode variables are only created if the user said yes
